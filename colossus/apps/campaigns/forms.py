@@ -13,7 +13,7 @@ from .models import Campaign
 class CreateCampaignForm(forms.ModelForm):
     class Meta:
         model = Campaign
-        fields = ('name', 'mailing_list', 'tag')
+        fields = ('name', 'mailing_list', 'tag', 'track_opens', 'track_clicks')
         widgets = {
             'mailing_list': forms.HiddenInput(),
             'tag': forms.HiddenInput()
