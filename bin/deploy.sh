@@ -2,10 +2,10 @@
 
 su - colossus -c "git -C ~/colossus pull origin master"
 
-migrations="$(/home/colossus/venv/bin/python /home/colossus/colossus/manage.py showmigrations --plan | grep -v '\[X\]')"
+migrations="$(/webapps/colossus/venv/bin/python /webapps/colossus/colossus/manage.py showmigrations --plan | grep -v '\[X\]')"
 
 if [[ $migrations = *[!\ ]* ]]; then
-  githash="$(git -C /home/colossus/colossus rev-parse --short HEAD^1)"
+  githash="$(git -C /webapps/colossus/colossus rev-parse --short HEAD^1)"
   now=`date +%Y%m%d%H%M%S`
   dumpfile="colossus_db_backup_${githash}_${now}.sql"
   su - postgres -c "pg_dump colossus > ${dumpfile}"
