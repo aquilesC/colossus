@@ -7,7 +7,7 @@ import requests
 
 class Mailgun:
     def _request(self, method: str, endpoint: str, params: Optional[Dict] = None):
-        url = '%s/%s' % (settings.MAILGUN_API_BASE_URL, endpoint)
+        url = '%s/%s/%s' % (settings.MAILGUN_API_BASE_URL, settings.MAILGUN_DOMAIN, endpoint)
         response = requests.request(method, url, params=params, auth=('api', settings.MAILGUN_API_KEY))
         return response
 
